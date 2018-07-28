@@ -2,6 +2,18 @@
 
 ConnpassToCalendarは[connpass API](https://connpass.com/about/api/) で取得したイベントを[Googleカレンダー](https://calendar.google.com/)に登録することができるCLIアプリケーションです。
 
+## 詳細
+ConnpassToCalendarは[connpass API](https://connpass.com/about/api/)で取得したイベントを[Googleカレンダー](https://calendar.google.com/)のスケジュールとして登録できます。  
+イベントの登録と設定用のコマンドを提供しております。
+カレンダー登録時には登録したイベント情報を管理しており、同じイベントの重複登録を防ぎます。  
+またGoogleAPIの設定情報はコマンドラインから設定、変更可能です。  
+
+イベント、GoogleAPIの情報はSQLite3で以下ディレクトリに格納するようになっております。
+アプリケーションの削除時にはこちらも削除をお願いいたします。
+
+	${HOME}/.connpass_to_calendar/db/connpass_to_calendar.sqlite3
+
+
 ## インストール 
 
 gemでインストール：
@@ -12,21 +24,21 @@ gemでインストール：
 
 ### GoogleCalendarAPIの登録
 
-このアプリを使うにはGoogleCalendarのAPI登録が必要です。
-Gmailアカウント(Googleアカウント)は取得済みの前提とします。
+このアプリを使うにはGoogleCalendarのAPI登録が必要です。  
+Gmailアカウント(Googleアカウント)は取得済みの前提とします。  
 1.[GoogleAPIsのコンソール](https://console.developers.google.com/apis/dashboard)からプロジェクトを作成します。
 
-2.左のライブラリタブでGoogle Calendar APIを検索し、有効にします。
+2.左のライブラリタブでGoogle Calendar APIを検索し、有効にします。  
 
-3.認証情報タブのOAuth同意画面でOAuth認証情報の登録をします。
+3.認証情報タブのOAuth同意画面でOAuth認証情報の登録をします。  
 
-4.認証情報タブの認証情報で「認証情報の作成」、「OAuthクライアントIDの作成」、「その他」と進みクライアントIDを作成します。
+4.認証情報タブの認証情報で「認証情報の作成」、「OAuthクライアントIDの作成」、「その他」と進みクライアントIDを作成します。  
 
-5.作成したクライアントIDのjsonファイルをダウンロードします。
+5.作成したクライアントIDのjsonファイルをダウンロードします。  
 
 ### 設定
 
-`config`コマンドを使用して以下を設定します。
+`config`コマンドを使用して以下を設定します。  
 
 	$ connpass_to_calendar config application_name <作成したプロジェクト名>
 
@@ -36,16 +48,16 @@ Gmailアカウント(Googleアカウント)は取得済みの前提とします�
 
 	$ connpass_to_calendar config user_id <APIを登録したGmailアカウント>
 
-設定した内容は`config --list`で確認できます。
+設定した内容は`config --list`で確認できます。  
 
 ## 使い方
 
-`put`コマンドを使用してカレンダーにイベントを登録します。
+`put`コマンドを使用してカレンダーにイベントを登録します。  
 
 	$ connpass_to_calendar put
 
-[connpass API](https://connpass.com/about/api/)のパラメータを使用する場合は以下のようにオプションをつけます。
-オプションはリファレンスに乗っている`format`以外使用可能です。
+[connpass API](https://connpass.com/about/api/)のパラメータを使用する場合は以下のようにオプションをつけます。  
+オプションはリファレンスに乗っている`format`以外使用可能です。  
 
 	$ connpass_to_calendar put --keyword "ruby"
 
@@ -53,6 +65,10 @@ Gmailアカウント(Googleアカウント)は取得済みの前提とします�
 メッセージに従いURLへアクセスしカレンダーへのアクセスを許可し、表示されたコードを貼り付けてください。
 
 	Open https://accounts.google.com/o/oauth2/auth?<params> in your browser and enter the resulting code:
+
+
+![image](./.readme/img/exec_sample.png)
+![image](./.readme/img/calendar_sample.png)
 
 ## Contributing
 

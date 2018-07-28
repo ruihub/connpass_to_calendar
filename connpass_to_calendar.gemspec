@@ -38,7 +38,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "thor", "~> 0.20.0"
   spec.add_dependency "googleauth"
-  spec.add_dependency "google-api-client", "~> 0.8"
+  spec.add_dependency "google-api-client", "~> 0.11"
   spec.add_dependency "activerecord"
   spec.add_dependency "sqlite3", "~> 1.3"
 end
