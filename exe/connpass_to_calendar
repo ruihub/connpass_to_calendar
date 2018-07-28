@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require "connpass_to_calendar"
+
+ConnpassToCalendar::Cli.start
